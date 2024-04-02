@@ -33,6 +33,10 @@ const EmployeeComponent = () => {
     }
   }, []);
 
+  /**
+   *
+   * need to fix backend updating employee first name last name gets substringed
+   */
   function saveOrUpdateEmployee(e) {
     e.preventDefault();
 
