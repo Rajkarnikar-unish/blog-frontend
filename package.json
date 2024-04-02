@@ -2,7 +2,7 @@
   "name": "ems-frontend",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://ems-frontend.azurewebsites.net/",
+  "homepage": ".",
   "type": "module",
   "scripts": {
     "dev": "vite",
