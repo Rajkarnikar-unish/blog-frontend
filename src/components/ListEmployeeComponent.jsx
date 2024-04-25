@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { deleteEmployee, listEmployees } from "../services/EmployeeService";
+import { deleteEmployee } from "../services/UserService";
 import { useNavigate } from "react-router-dom";
 
 const ListEmployeeComponent = () => {
@@ -12,13 +12,13 @@ const ListEmployeeComponent = () => {
   }, []);
 
   function getAllEmployees() {
-    listEmployees()
+    /**listEmployees()
       .then((response) => {
         setEmployees(response.data);
       })
       .catch((error) => {
         console.error(error);
-      });
+      });*/
   }
 
   function addNewEmployee() {
@@ -72,7 +72,7 @@ const ListEmployeeComponent = () => {
                 </button>
                 <button
                   className="btn btn-danger ms-2"
-                  onClick={() => removeEmployee(employee.id)}
+                  //onClick={() => removeEmployee(employee.id)}
                 >
                   Delete
                 </button>

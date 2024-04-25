@@ -1,14 +1,13 @@
-import { useState } from "react";
 import "./App.css";
 import ListEmployeeComponent from "./components/ListEmployeeComponent";
 import HeaderComponent from "./components/HeaderComponent";
 import FooterComponent from "./components/FooterComponent";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import EmployeeComponent from "./components/EmployeeComponent";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <BrowserRouter>
@@ -19,6 +18,10 @@ function App() {
 
           {/* //http://localhost:3000/employees */}
           <Route path="/employees" element={<ListEmployeeComponent />} />
+
+          <Route path="/login" element={<Login />} />
+
+          <Route path="signup" element={<Signup />} />
 
           {/* //http://localhost:3000/add-employee */}
           <Route path="/add-employee" element={<EmployeeComponent />} />

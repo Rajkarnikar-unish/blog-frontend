@@ -3,7 +3,7 @@ import {
   addNewEmployee,
   getEmployee,
   updateEmployee,
-} from "../services/EmployeeService";
+} from "../services/UserService";
 import { useNavigate, useParams } from "react-router-dom";
 
 const EmployeeComponent = () => {
