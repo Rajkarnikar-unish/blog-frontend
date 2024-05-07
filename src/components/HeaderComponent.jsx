@@ -8,13 +8,14 @@ const HeaderComponent = () => {
     navigator("/login");
   }
 
+  function writeNewBlog() {
+    navigator("/new-blog");
+  }
+
   return (
     <>
       <header>
-        <nav
-          className="navbar navbar-dark bg-dark"
-          style={{ paddingLeft: "50px" }}
-        >
+        <nav className="navbar navbar-dark" style={{ paddingLeft: "50px" }}>
           <div className="container-fluid">
             <a
               className="navbar-brand"
@@ -24,11 +25,14 @@ const HeaderComponent = () => {
                 navigator("/");
               }}
             >
-              Dashboard
+              ThoughtLabs
             </a>
 
             <div className="navbar-nav">
               <ul className="nav">
+                <a className="btn btn-link" onClick={writeNewBlog}>
+                  Write
+                </a>
                 <button className="btn btn-outline-light" onClick={userLogin}>
                   Login
                 </button>

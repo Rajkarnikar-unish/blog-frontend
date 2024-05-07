@@ -1,3 +1,31 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+/* 
+    COLORS
+       Liver #7A5C58
+       African Violet #8D80AD
+       Powder Blue #99B2DD
+       Ice Blue #9DFFF9
+        Spring Green #64F58D
+ */
+* {
+    font-family: "Roboto Slab", serif;
+}
+
+.container {
+    width: 100vh;
+    /* max-height: 100vh; */
+    /* overflow-y: auto; */
+}
+
+.card-body {
+    /* height: 100vh; */
+    min-height: 0;
+}
+
 .footer {
     position: fixed;
     bottom: 0;
@@ -6,11 +34,80 @@
     align-items: center;
     justify-content: center;
     height: 50px;
-    background-color: black;
+    background-color: #8D80AD;
     text-align: center;
     color: white;
 }
 
 li {
     color: white;
+}
+
+header {
+    background-color: #8D80AD;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    /* font-fam */
+}
+
+.btn.btn-link{
+    color: #FFFFFF;
+}
+
+.btn.btn-link:hover{
+    color: #9cb9b7;
+}
+
+.btn.btn-link:active {
+    color: yellow;
+}
+
+.date-author {
+    display: flex;
+    color: #9cb9b7;
+}
+
+.intro {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    text-align: justify;
+    max-height: 5em;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.container.blog-tile {
+    /* width: 60%; */
+    display: inline-flex;
+    height: 200;
+}
+
+.thumbnail {
+    height: 130px;
+    width: 130px;
+    object-fit: cover;
+}
+
+.container.main-container {
+    display: flex;
+}
+
+.container.blogs-container::after {
+    border-right: #7A5C58 solid 1px;
+    position: absolute;
+    top: 50px;
+    padding-left: 10px;
+    bottom: 50px;
+    content: "";
+}
+
+.container.blogs-container {
+    position: relative;
+}
+.container.main-aside {
+    width: 35%;
 }

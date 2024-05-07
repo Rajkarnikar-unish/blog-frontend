@@ -97,7 +97,7 @@ const Login = () => {
               </div>
               <div className="container">
                 <div className="row">
-                  <div className="col-9 d-flex">
+                  <div className="col-8 d-flex">
                     <input
                       type="checkbox"
                       className="mb-3"
