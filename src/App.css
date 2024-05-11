@@ -52,6 +52,10 @@ header {
     /* font-fam */
 }
 
+.navbar-brand:hover {
+    cursor: pointer;
+}
+
 .btn.btn-link{
     color: #FFFFFF;
 }

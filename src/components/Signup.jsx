@@ -1,11 +1,12 @@
 import { React, useState, useContext } from "react";
-import { UserContext } from "../model/userContext.jsx";
+// import { UserContext } from "../model/userContext.jsx";
 import { signUpUser } from "../services/UserService.js";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const { user, setUser } = useContext(UserContext);
+  // const { user, setUser } = useContext(UserContext);
 
   const handlePasswordVisibility = (e) => {
     setShowPassword(e.target.checked);
@@ -16,6 +17,8 @@ const Signup = () => {
   function validateForm() {
     console.log(user);
   }
+
+  const navigator = useNavigate();
 
   const handleInputChange = (e) => {
     e.preventDefault();

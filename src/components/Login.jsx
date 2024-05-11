@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { loginUserAPI } from "../services/UserService";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthProvider.jsx";
+import User from "../model/User.js";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -19,17 +22,52 @@ const Login = () => {
     setShowPassword(e.target.checked);
   };
 
+  const { login } = useAuth();
+
   function loginUser(e) {
     e.preventDefault();
     if (validateForm()) {
-      const user = { username, password };
+      const userResponse = { username, password };
 
-      loginUserAPI(user)
+      loginUserAPI(userResponse)
         .then((response) => {
-          console.log(response.data);
+          if (response.status === 200) {
+            return response.data;
+          }
+        })
+        .then((data) => {
+          setUsername("");
+          setPassword("");
+          const {
+            username,
+            email,
+            firstName,
+            lastName,
+            token: accessToken,
+            refreshToken,
+          } = data;
+
+          if (!username || !email || !accessToken || !refreshToken) {
+            throw new Error("Incomplete user data received");
+          }
+
+          const user = new User(
+            username,
+            firstName,
+            lastName,
+            email,
+            accessToken,
+            refreshToken
+          );
+          login({ user });
+
+          navigator("/");
         })
         .catch((error) => {
-          console.error(error);
+          console.error(
+            "Error message during login: ",
+            error.message || "An unknown error occured!"
+          );
         });
     }
   }

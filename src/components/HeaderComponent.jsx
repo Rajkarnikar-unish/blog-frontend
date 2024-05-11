@@ -17,16 +17,18 @@ const HeaderComponent = () => {
       <header>
         <nav className="navbar navbar-dark" style={{ paddingLeft: "50px" }}>
           <div className="container-fluid">
-            <a
+            <div
               className="navbar-brand"
-              href={`/`}
               onClick={(e) => {
                 e.preventDefault();
                 navigator("/");
               }}
             >
-              ThoughtLabs
-            </a>
+              <img src="logo-no-bg.png" width={60} height={60} />
+              <a className="navbar-brand" href={`/`}>
+                ThoughtLabs
+              </a>
+            </div>
 
             <div className="navbar-nav">
               <ul className="nav">
