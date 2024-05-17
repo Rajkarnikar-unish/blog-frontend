@@ -1,32 +1,24 @@
 import React from "react";
 
-const BlogTileComponent = () => {
+const BlogTileComponent = ({ blog }) => {
+  const { title, content, author, createdAt } = blog;
   return (
     <>
       <div className="container pt-4 blog-tile">
         <div className="container">
-          <p className="h5">Getting Started with GitHub: A Beginner's Guide</p>
+          <p className="h5">{title}</p>
           <div className="date-author">
-            <p className="h6">5/7/2024</p>
-            <p className="h6 ms-2">Author Meta</p>
+            <p className="h6">{createdAt}</p>
+            <p className="h6 ms-2">{author.username}</p>
           </div>
-          <p className="intro">
-            Are you new to GitHub and wondering where to start? Look no further!
-            GitHub is an incredible platform for developers, designers, and
-            creatives to collaborate and share their work. In this post, we'll
-            take you through the basics of getting started with GitHub. First
-            things first, head over to (link unavailable) and sign up for a free
-            account. You can use your email address or login with your Microsoft
-            or Google account. Once you've signed up, choose a profile picture
-            and bio to help others get to know you. This is your ch
-          </p>
+          <p className="intro">{content}</p>
         </div>
         <div>
-          <img
+          {/* <img
             src="src\assets\github.jpeg"
             alt="ThumbnailImage"
             className="thumbnail"
-          />
+          /> */}
         </div>
       </div>
     </>

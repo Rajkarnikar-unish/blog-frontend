@@ -1,16 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthProvider";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ProfileDrawer from "./ProfileDrawer";
 
 const HeaderComponent = () => {
   const navigator = useNavigate();
+  const { user, logout } = useAuth();
 
   function userLogin() {
     navigator("/login");
   }
 
+  function userLogout() {
+    logout();
+    showLogoutToast();
+    navigator("/");
+  }
+
   function writeNewBlog() {
     navigator("/new-blog");
   }
+
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+
+  const toggleDrawer = () => setIsProfileOpen(!isProfileOpen);
+
+  const showLogoutToast = () => {
+    toast.success("Logout Successful", {
+      position: "bottom-right",
+    });
+  };
 
   return (
     <>
@@ -30,19 +53,38 @@ const HeaderComponent = () => {
               </a>
             </div>
 
+            {/* <div className="h3">{isProfileOpen ? "Open" : "Close"}</div> */}
+
             <div className="navbar-nav">
               <ul className="nav">
                 <a className="btn btn-link" onClick={writeNewBlog}>
                   Write
                 </a>
-                <button className="btn btn-outline-light" onClick={userLogin}>
-                  Login
-                </button>
+                {user ? (
+                  <div className="profile">
+                    <div className="avatar">
+                      <FontAwesomeIcon icon={faUser} size="lg" />
+                    </div>
+                    <div className="profile-content">
+                      <button className="btn" onClick={toggleDrawer}>
+                        Profile
+                      </button>
+                      <button className="btn" onClick={userLogout}>
+                        Logout
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <button className="btn btn-outline-light" onClick={userLogin}>
+                    Login
+                  </button>
+                )}
               </ul>
             </div>
           </div>
         </nav>
       </header>
+      <ProfileDrawer value={isProfileOpen} setValue={setIsProfileOpen} />
     </>
   );
 };

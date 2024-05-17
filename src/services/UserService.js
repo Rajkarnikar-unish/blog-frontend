@@ -1,9 +1,15 @@
 import axios from "axios";
-import EmployeeComponent from "../components/EmployeeComponent";
 
 const BASE_URL = "http://localhost:8080/api";
 
-// export const listEmployees = () => axios.get(BASE_URL+'auth/use');
+export const getAllBlogsAPI = () => axios.get(BASE_URL + "/posts");
+
+export const createBlogPostAPI = (blog) => axios.post({
+    method: 'post',
+    url: `${BASE_URL}/posts/new-post`,
+    headers: {},
+    data: blog,
+});
 
 export const listRoles = () => axios.get(`${BASE_URL}/role/all`);
 
@@ -18,7 +24,7 @@ export const signUpUser = (user) => axios({
     method: 'post',
     url: `${BASE_URL}/auth/register`,
     headers: {},
-    data: user,
+    datApa: user,
 });
 
 export const getAllUser = () => axios({

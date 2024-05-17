@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { loginUserAPI } from "../services/UserService";
+import { loginUserAPI } from "../services/UserService.js";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthProvider.jsx";
 import User from "../model/User.js";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -61,6 +62,7 @@ const Login = () => {
           );
           login({ user });
 
+          showLoginToast();
           navigator("/");
         })
         .catch((error) => {
@@ -71,6 +73,12 @@ const Login = () => {
         });
     }
   }
+
+  const showLoginToast = () => {
+    toast.success("Login Successfully", {
+      position: "bottom-right",
+    });
+  };
 
   function validateForm() {
     let valid = true;
