@@ -7,6 +7,8 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
+  // const [userDetails, setUserDetails] = useState(null);
+
   const accessToken = localStorage.getItem("accessToken");
   const refreshToken = localStorage.getItem("refreshToken");
 
@@ -21,8 +23,9 @@ export const AuthProvider = ({ children }) => {
 
   const login = (userData) => {
     setUser(userData);
-    const { accessToken, refreshToken } = userData.user;
-    localStorage.setItem("accessToken", accessToken);
+    // console.log(userData);
+    // const { accessToken, refreshToken } = userData.user;
+    localStorage.setItem("accessToken", userData.user.accessToken);
     localStorage.setItem("refreshToken", refreshToken);
   };
 

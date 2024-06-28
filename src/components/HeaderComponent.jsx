@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ProfileDrawer from "./ProfileDrawer";
 
 const HeaderComponent = () => {
   const navigator = useNavigate();
@@ -22,12 +21,12 @@ const HeaderComponent = () => {
   }
 
   function writeNewBlog() {
-    navigator("/new-blog");
+    user
+      ? navigator("/new-blog")
+      : toast.warning("User not logged in", {
+          position: "bottom-right",
+        });
   }
-
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
-
-  const toggleDrawer = () => setIsProfileOpen(!isProfileOpen);
 
   const showLogoutToast = () => {
     toast.success("Logout Successful", {
@@ -66,7 +65,10 @@ const HeaderComponent = () => {
                       <FontAwesomeIcon icon={faUser} size="lg" />
                     </div>
                     <div className="profile-content">
-                      <button className="btn" onClick={toggleDrawer}>
+                      <button
+                        className="btn"
+                        onClick={() => navigator("/profile")}
+                      >
                         Profile
                       </button>
                       <button className="btn" onClick={userLogout}>
@@ -84,7 +86,6 @@ const HeaderComponent = () => {
           </div>
         </nav>
       </header>
-      <ProfileDrawer value={isProfileOpen} setValue={setIsProfileOpen} />
     </>
   );
 };

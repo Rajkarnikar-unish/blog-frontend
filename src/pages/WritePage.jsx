@@ -1,40 +1,41 @@
 import React, { useState } from "react";
-import { createBlogPostAPI } from "../services/UserService";
+import { BASE_URL, createBlogPostAPI } from "../services/UserService";
 import { faBookDead } from "@fortawesome/free-solid-svg-icons";
 import "react-quill/dist/quill.snow.css";
+import axios from "axios";
 import QuillEditor from "react-quill";
 
 const WritePage = () => {
   const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
+  const [content, setContent] = useState("");
 
   const [errors, setErrors] = useState({
     title: "",
-    body: "",
+    content: "",
   });
 
-  function postBlog() {
+  const token = localStorage.getItem("accessToken");
+
+  const postBlog = (e) => {
+    e.preventDefault();
     if (validateForm()) {
-      const blogPost = { title, body };
+      const blogPost = { title, content };
+      // console.log(blogPost);
 
-      console.log(blogPost);
-
-      // createBlogPostAPI(blogPost)
-      //   .then((response) => {
-      //     console.log(response.data);
-      //     return response.data;
-      //     // if (response.status === 200) {
-
-      //     // }
-      //   })
-      //   .catch((error) => {
-      //     console.error(
-      //       "Error posting the blog",
-      //       error.message || "An unknown error occured!"
-      //     );
-      //   });
+      createBlogPostAPI(blogPost, token)
+        .then((response) => {
+          if (response.status === 200) {
+            console.log(response.data);
+          }
+        })
+        .catch((error) => {
+          console.error(
+            "Error saving the draft: ",
+            error.message || "An unknown error occured!"
+          );
+        });
     }
-  }
+  };
 
   function validateForm() {
     let valid = true;
@@ -48,16 +49,50 @@ const WritePage = () => {
       valid = false;
     }
 
-    if (body.trim()) {
-      errorsCopy.body = "";
+    if (content.trim()) {
+      errorsCopy.content = "";
     } else {
-      errorsCopy.body = "Body cannot be blank";
+      errorsCopy.content = "content cannot be blank";
       valid = false;
     }
 
     setErrors(errorsCopy);
     return valid;
   }
+
+  const formats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "image",
+    "color",
+    "clean",
+  ];
+
+  const modules = {
+    toolbar: {
+      container: [
+        [{ header: [1, 2, 3, 4, false] }],
+        ["bold", "italic", "underline", "blockquote"],
+        [{ color: [] }],
+        [
+          { list: "ordered" },
+          { list: "bullet" },
+          { indent: "-1" },
+          { indent: "+1" },
+        ],
+        ["link", "image"],
+        ["clean"],
+      ],
+    },
+  };
 
   return (
     <>
@@ -77,19 +112,17 @@ const WritePage = () => {
           )}
           <QuillEditor
             className="editor pb-5"
-            // theme="snow"
-            value={body}
-            onChange={(value) => setBody(value)}
+            theme="snow"
+            value={content}
+            formats={formats}
+            modules={modules}
+            onChange={(value) => {
+              setContent(value);
+            }}
           />
 
           <div className="mt-3">
-            <button
-              className="btn btn-danger"
-              onClick={(e) => {
-                e.preventDefault();
-                postBlog();
-              }}
-            >
+            <button className="btn btn-danger" onClick={(e) => postBlog(e)}>
               Save draft
             </button>
             <button className="btn ms-3 btn-success">Publish</button>

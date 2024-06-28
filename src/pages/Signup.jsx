@@ -12,7 +12,7 @@ const Signup = () => {
     setShowPassword(e.target.checked);
   };
 
-  const [errors, setErrors] = useState(user);
+  // const [errors, setErrors] = useState(user);
 
   function validateForm() {
     console.log(user);
@@ -51,7 +51,7 @@ const Signup = () => {
                   placeholder="E.g. johnDoe"
                   className="form-control"
                   onChange={handleInputChange}
-                  value={user.username}
+                  // value={user.username}
                   name="username"
                 />
               </div>
@@ -64,7 +64,7 @@ const Signup = () => {
                       placeholder="E.g. John"
                       className="form-control"
                       onChange={handleInputChange}
-                      value={user.firstName}
+                      // value={user.firstName}
                       name="firstName"
                     />
                   </div>
@@ -75,7 +75,7 @@ const Signup = () => {
                       placeholder="E.g. Doe"
                       className="form-control"
                       onChange={handleInputChange}
-                      value={user.lastName}
+                      // value={user.lastName}
                       name="lastName"
                     />
                   </div>
@@ -88,7 +88,7 @@ const Signup = () => {
                   placeholder="E.g. johndoe@gmail.com"
                   className="form-control"
                   onChange={handleInputChange}
-                  value={user.email}
+                  // value={user.email}
                   name="email"
                 />
               </div>
@@ -99,7 +99,7 @@ const Signup = () => {
                   className="form-control"
                   name="password"
                   onChange={handleInputChange}
-                  value={user.password}
+                  // value={user.password}
                   placeholder="Enter a password"
                 />
               </div>
@@ -110,7 +110,7 @@ const Signup = () => {
                   className="form-control"
                   name="confirmPassword"
                   onChange={handleInputChange}
-                  value={user.confirmPassword}
+                  // value={user.confirmPassword}
                   placeholder="Re-enter your password"
                 />
               </div>

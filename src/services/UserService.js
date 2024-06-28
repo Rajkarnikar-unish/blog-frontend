@@ -1,12 +1,24 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8080/api";
+export const BASE_URL = "http://localhost:8080/api";
 
 export const getAllBlogsAPI = () => axios.get(BASE_URL + "/posts");
 
-export const createBlogPostAPI = (blog) => axios.post({
+export const getBlogByIDAPI = (id) => axios.get(BASE_URL + "/posts/" + id);
+
+export const createBlogPostAPI = (blog, token) => axios({
     method: 'post',
     url: `${BASE_URL}/posts/new-post`,
+    headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-type": "application/json",
+    },
+    data: blog,
+});
+
+export const createAndPublishBlogPostAPI = (blog) => axios({
+    method: 'post',
+    url: `${BASE_URL}/posts/publish`,
     headers: {},
     data: blog,
 });
@@ -24,7 +36,7 @@ export const signUpUser = (user) => axios({
     method: 'post',
     url: `${BASE_URL}/auth/register`,
     headers: {},
-    datApa: user,
+    data: user,
 });
 
 export const getAllUser = () => axios({

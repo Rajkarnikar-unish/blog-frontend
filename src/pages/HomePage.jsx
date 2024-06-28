@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import BlogTileComponent from "../components/BlogTileComponent";
-import ProfileDrawer from "../components/ProfileDrawer";
 import { getAllBlogsAPI } from "../services/UserService";
 import Blog from "../model/Blog";
 
@@ -14,17 +13,27 @@ const HomePage = () => {
     });
   }, []);
 
-  // console.log(blogs);
-
   return (
     <div className="container main-container">
-      <div className="container blogs-container">
+      <div className="container mt-4 blogs-container">
         {blogs.map((blog, index) => (
           <BlogTileComponent key={index} blog={blog} />
         ))}
       </div>
       <div className="container main-aside">
-        <p className="display-3"></p>
+        <p className="h5 aside-title">Trending now</p>
+        <div className="topics">
+          <p className="topic">Technology</p>
+          <p className="topic">Marketing</p>
+          <p className="topic">Stocks</p>
+          <p className="topic">US</p>
+          <p className="topic">Health & Wellness</p>
+          <p className="topic">Lifestyle</p>
+          <p className="topic">Education</p>
+          <p className="topic">Business</p>
+        </div>
+        {/* <p className="h5 aside-title">Suggested Blogs</p>
+        <div className="suggestions"></div> */}
       </div>
     </div>
   );
