@@ -35,6 +35,9 @@ const WritePage = () => {
           );
         });
     }
+    {
+      console.error("Form not validated");
+    }
   };
 
   function validateForm() {
@@ -109,18 +112,19 @@ const WritePage = () => {
               console.log(e);
               return setTitle(e.target.value);
             }}
-          />
-          {errors.title && (
-            <div className="invalid-feedback">{errors.title}</div>
-          )} */}
+          /> */}
+
           <QuillEditor
-            className="title-editor"
+            className={`title-editor  ${errors.title ? "is-valid" : ""}`}
             theme="bubble"
             placeholder="Your title here..."
             onChange={(value) => {
               setTitle(value);
             }}
           />
+          {errors.title && (
+            <div className="invalid-feedback">{errors.title}</div>
+          )}
           <QuillEditor
             className="content-editor pb-1"
             theme="bubble"
