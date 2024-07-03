@@ -174,16 +174,17 @@ header {
     color: rgba(0,0,0, .65);
 }
 
-/* container.blog-tile::after {
-    content: '';
-    bottom: 0;
-    width: 95%;
-    border-bottom: .25px solid rgba(0, 0, 0, .20);
-    position: absolute;
-    left: 20px;
-} */
 .blog-content {
     text-align: justify;
+}
+
+.blog-form {
+    flex: 1;
+}
+
+.editor-container {
+    display: flex;
+    flex-direction: row;
 }
 
 /* Profile Component */
@@ -328,6 +329,33 @@ header {
 
 /* Write Page */
 
-.editor {
-    height: 450px;
+.title-editor {
+    content: '';
+    width: 90%;
+    border-bottom: .25px solid rgba(0, 0, 0, .20);
+    position: relative;
+}
+
+.title-editor > .ql-container > .ql-editor {
+    font-size: 30px;
+}
+
+.title-editor>.ql-container>.ql-blank {
+    padding: 0 auto;
+}
+
+
+.content-editor {
+    height: 470px;
+    width: 90%;
+}
+
+.content-editor > .ql-container > .ql-editor {
+    font-size: 16px;
+    padding: 0 auto;
+}
+
+.content-editor ul li,
+.content-editor ol li {
+    color: black;
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BASE_URL, createBlogPostAPI } from "../services/UserService";
 import { faBookDead } from "@fortawesome/free-solid-svg-icons";
-import "react-quill/dist/quill.snow.css";
+import "react-quill/dist/quill.bubble.css";
 import axios from "axios";
 import QuillEditor from "react-quill";
 
@@ -96,38 +96,49 @@ const WritePage = () => {
 
   return (
     <>
-      <div className="container mt-3">
-        <form>
-          <input
+      <div className="container editor-container mt-3">
+        <form className="blog-form">
+          {/* <input
             type="text"
             placeholder="Title"
             className={`form-control mb-2 title-field ${
               errors.title ? "is-invalid" : ""
             }`}
             aria-label="Large"
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => {
+              console.log(e);
+              return setTitle(e.target.value);
+            }}
           />
           {errors.title && (
             <div className="invalid-feedback">{errors.title}</div>
-          )}
+          )} */}
           <QuillEditor
-            className="editor pb-5"
-            theme="snow"
+            className="title-editor"
+            theme="bubble"
+            placeholder="Your title here..."
+            onChange={(value) => {
+              setTitle(value);
+            }}
+          />
+          <QuillEditor
+            className="content-editor pb-1"
+            theme="bubble"
             value={content}
             formats={formats}
+            placeholder="What's on your mind?"
             modules={modules}
             onChange={(value) => {
               setContent(value);
             }}
           />
-
-          <div className="mt-3">
-            <button className="btn btn-danger" onClick={(e) => postBlog(e)}>
-              Save draft
-            </button>
-            <button className="btn ms-3 btn-success">Publish</button>
-          </div>
         </form>
+        <div className="blog-buttons mt-3">
+          <button className="btn btn-danger" onClick={(e) => postBlog(e)}>
+            Save draft
+          </button>
+          <button className="btn ms-3 btn-success">Publish</button>
+        </div>
       </div>
     </>
   );
