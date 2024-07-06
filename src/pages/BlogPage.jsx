@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { getBlogByIDAPI } from "../services/UserService";
+import parse from "html-react-parser";
+import FooterComponent from "../components/FooterComponent";
 
 const BlogPage = () => {
   const state = useLocation();
@@ -32,15 +34,15 @@ const BlogPage = () => {
   return (
     <>
       <div className="container blog-page">
-        <p className="h2 mt-4 blog-title">{title}</p>
+        <p className="h2 mt-4 blog-title">{parse(`${title}`)}</p>
 
         <div className="meta">
           <p className="username">{username} •</p>
           <p className="ps-1">{date}</p>
         </div>
-        <p className="blog-content">{content}</p>
-        {/* <p>{author.username}</p> */}
+        <p className="blog-content">{parse(`${content}`)}</p>
       </div>
+      <FooterComponent />
     </>
   );
 };

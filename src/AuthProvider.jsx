@@ -23,10 +23,8 @@ export const AuthProvider = ({ children }) => {
 
   const login = (userData) => {
     setUser(userData);
-    // console.log(userData);
-    // const { accessToken, refreshToken } = userData.user;
     localStorage.setItem("accessToken", userData.user.accessToken);
-    localStorage.setItem("refreshToken", refreshToken);
+    localStorage.setItem("refreshToken", userData.user.refreshToken);
   };
 
   const logout = () => {

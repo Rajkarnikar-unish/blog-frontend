@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { BASE_URL, createBlogPostAPI } from "../services/UserService";
+import {
+  BASE_URL,
+  createAndPublishBlogPostAPI,
+  createBlogPostAPI,
+} from "../services/UserService";
 import { faBookDead } from "@fortawesome/free-solid-svg-icons";
 import "react-quill/dist/quill.bubble.css";
 import axios from "axios";
@@ -14,13 +18,13 @@ const WritePage = () => {
     content: "",
   });
 
-  const token = localStorage.getItem("accessToken");
-
   const postBlog = (e) => {
     e.preventDefault();
     if (validateForm()) {
       const blogPost = { title, content };
-      // console.log(blogPost);
+      console.log(blogPost);
+
+      const token = localStorage.getItem("accessToken");
 
       createBlogPostAPI(blogPost, token)
         .then((response) => {
@@ -36,6 +40,30 @@ const WritePage = () => {
         });
     }
     {
+      console.error("Form not validated");
+    }
+  };
+
+  const postAndPublishBlog = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      const blogPost = { title, content };
+
+      const token = localStorage.getItem("accessToken");
+
+      createAndPublishBlogPostAPI(blogPost, token)
+        .then((response) => {
+          if (response.status === 200) {
+            console.log(response.data);
+          }
+        })
+        .catch((error) => {
+          console.error(
+            "An error occured: ",
+            error.message || "An unknown error occured!"
+          );
+        });
+    } else {
       console.error("Form not validated");
     }
   };
@@ -141,7 +169,12 @@ const WritePage = () => {
           <button className="btn btn-danger" onClick={(e) => postBlog(e)}>
             Save draft
           </button>
-          <button className="btn ms-3 btn-success">Publish</button>
+          <button
+            className="btn ms-3 btn-success"
+            onClick={(e) => postAndPublishBlog(e)}
+          >
+            Publish
+          </button>
         </div>
       </div>
     </>

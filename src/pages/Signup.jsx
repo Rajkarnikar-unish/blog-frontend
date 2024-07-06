@@ -12,8 +12,6 @@ const Signup = () => {
     setShowPassword(e.target.checked);
   };
 
-  // const [errors, setErrors] = useState(user);
-
   function validateForm() {
     console.log(user);
   }

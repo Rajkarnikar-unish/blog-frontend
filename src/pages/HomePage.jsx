@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import BlogTileComponent from "../components/BlogTileComponent";
 import { getAllBlogsAPI } from "../services/UserService";
 import Blog from "../model/Blog";
+import FooterComponent from "../components/FooterComponent";
 
 const HomePage = () => {
   const [blogs, setBlogs] = useState([]);
@@ -32,6 +33,7 @@ const HomePage = () => {
           <p className="topic">Education</p>
           <p className="topic">Business</p>
         </div>
+        <FooterComponent />
         {/* <p className="h5 aside-title">Suggested Blogs</p>
         <div className="suggestions"></div> */}
       </div>

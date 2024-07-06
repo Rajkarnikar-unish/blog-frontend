@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import parse from "html-react-parser";
 
 const BlogTileComponent = ({ blog }) => {
   const { id, title, content, author, createdAt } = blog;
@@ -21,13 +22,13 @@ const BlogTileComponent = ({ blog }) => {
         onClick={() => handleBlogNavigation(id)}
       >
         <div className="container blog-box">
-          <p className="h5">{title}</p>
+          <p className="h5">{parse(`${title}`)}</p>
           <div className="date-author">
             {/* <p className="h6">{createdAt}</p> */}
             <p className="h6">{date}</p>
             <p className="h6 ms-2">{author.username}</p>
           </div>
-          <p className="intro">{content}</p>
+          <p className="intro">{parse(`${content}`)}</p>
         </div>
         <div>
           {/* <img

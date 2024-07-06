@@ -16,15 +16,36 @@ export const createBlogPostAPI = (blog, token) => axios({
     data: blog,
 });
 
-export const createAndPublishBlogPostAPI = (blog) => axios({
-    method: 'post',
+export const createAndPublishBlogPostAPI = (blog, token) => axios({
+    method: 'put',
     url: `${BASE_URL}/posts/publish`,
-    headers: {},
+    headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json"
+    },
     data: blog,
 });
 
 export const listRoles = () => axios.get(`${BASE_URL}/role/all`);
 
+/**
+ * User Details API Function
+ * Requires Authorization header with JWT
+ */
+export const getUserDetailsAPI = (token) => axios({
+    method: 'get',
+    url: `${BASE_URL}/auth/me`,
+    headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-type": "application/json",
+    },
+})
+
+/**
+ * User Login API function
+ * No need for header
+ * Requires data with username and password as payload
+ */
 export const loginUserAPI = (user) => axios({
     method: 'post',
     url: `${BASE_URL}/auth/login`,
@@ -32,6 +53,17 @@ export const loginUserAPI = (user) => axios({
     data: user,
 });
 
+/**
+ * User SignUp API function
+ * No need for header
+ * Required data includes:
+ * username
+ * firstname, lastname
+ * email address
+ * password
+ * confirmed password 
+ * as payload
+ */
 export const signUpUser = (user) => axios({
     method: 'post',
     url: `${BASE_URL}/auth/register`,
@@ -44,11 +76,3 @@ export const getAllUser = () => axios({
     url: `{BASE_URL}/users/user-role?roleName=ROLE_USER`,
     headers: {},
 });
-
-export const addNewEmployee = (employee) => axios.post(`${BASE_URL}/new-employee`, employee);
-
-export const getEmployee = (id) => axios.get(`${BASE_URL}/${id}`);
-
-export const updateEmployee = (employeeId, employee) => axios.put(`${BASE_URL}/${employeeId}`, employee);
-
-export const deleteEmployee = (employeeId) => axios.delete(BASE_URL + '/' + employeeId);

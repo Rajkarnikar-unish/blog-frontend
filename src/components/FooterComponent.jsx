@@ -5,7 +5,23 @@ const FooterComponent = () => {
     <>
       <div>
         <footer className="footer">
-          <span>All rights reserved &copy; ThoughtLabs 2024</span>
+          <img src="../public/logo-no-bg.png" height={30} width={30} alt="" />
+          <span>&copy; ThoughtLabs 2024 | </span>
+          <div className="links ms-1">
+            <a href="#" className="ms-1">
+              Team
+            </a>
+            <a
+              href="https://github.com/Rajkarnikar-unish/blog-frontend"
+              target="_blank"
+              className="ms-1"
+            >
+              Collaborate here
+            </a>
+            <a href="#" className="ms-1">
+              Contact
+            </a>
+          </div>
         </footer>
       </div>
     </>
