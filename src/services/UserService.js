@@ -16,6 +16,12 @@ export const createBlogPostAPI = (blog, token) => axios({
     data: blog,
 });
 
+export const getPostsByUserAPI = (id) => axios({
+    method: 'get',
+    url: `${BASE_URL}/users/${id}/posts`,
+    headers: {},
+});
+
 export const createAndPublishBlogPostAPI = (blog, token) => axios({
     method: 'put',
     url: `${BASE_URL}/posts/publish`,
