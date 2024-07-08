@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import BlogTileComponent from "../components/BlogTileComponent";
-import { getAllBlogsAPI } from "../services/UserService";
-import Blog from "../model/Blog";
+import { getAllBlogsAPI } from "../services/BlogService";
 import FooterComponent from "../components/FooterComponent";
 
 const HomePage = () => {
@@ -20,8 +19,9 @@ const HomePage = () => {
         {blogs.map((blog, index) => (
           <BlogTileComponent key={index} blog={blog} />
         ))}
+        <FooterComponent />
       </div>
-      <div className="container main-aside">
+      {/* <div className="container main-aside">
         <p className="h5 aside-title">Trending now</p>
         <div className="topics">
           <p className="topic">Technology</p>
@@ -32,11 +32,10 @@ const HomePage = () => {
           <p className="topic">Lifestyle</p>
           <p className="topic">Education</p>
           <p className="topic">Business</p>
-        </div>
-        <FooterComponent />
-        {/* <p className="h5 aside-title">Suggested Blogs</p>
+        </div> */}
+      {/* <p className="h5 aside-title">Suggested Blogs</p>
         <div className="suggestions"></div> */}
-      </div>
+      {/* </div> */}
     </div>
   );
 };

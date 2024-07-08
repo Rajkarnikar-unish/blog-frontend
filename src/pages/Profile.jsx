@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getPostsByUserAPI, getUserDetailsAPI } from "../services/UserService";
+import { getUserDetailsAPI } from "../services/UserService";
 import BlogTileComponent from "../components/BlogTileComponent";
 
 const Profile = () => {
@@ -11,7 +11,6 @@ const Profile = () => {
       const data = response.data;
       setUserDetails(data);
     });
-    // getPostsByUserAPI()'
   }, []);
 
   const { id, username, firstName, lastName, email } = userDetails;

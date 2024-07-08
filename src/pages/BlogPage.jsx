@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { getBlogByIDAPI } from "../services/UserService";
+import { getBlogsByIDAPI } from "../services/BlogService";
 import parse from "html-react-parser";
 import FooterComponent from "../components/FooterComponent";
 
@@ -13,7 +13,7 @@ const BlogPage = () => {
   const [author, setAuthor] = useState([]);
 
   useEffect(() => {
-    getBlogByIDAPI(id).then((response) => {
+    getBlogsByIDAPI(id).then((response) => {
       const data = response.data;
       setAuthor(data.author);
       setBlog(data);

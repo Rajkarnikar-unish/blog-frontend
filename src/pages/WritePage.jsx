@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import {
-  BASE_URL,
   createAndPublishBlogPostAPI,
   createBlogPostAPI,
-} from "../services/UserService";
+} from "../services/BlogService";
 import { faBookDead } from "@fortawesome/free-solid-svg-icons";
 import "react-quill/dist/quill.bubble.css";
 import axios from "axios";

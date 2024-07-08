@@ -125,14 +125,14 @@ header {
     height: 100%;
 }
 
-.container.blogs-container::after {
+/* .container.blogs-container::after {
     border-right: #7A5C58 solid 1px;
     position: absolute;
     top: 50px;
     padding-left: 10px;
     bottom: 50px;
-    content: "";
-}
+    content: ""; */
+/* } */
 
 .container.blogs-container {
     position: relative;
