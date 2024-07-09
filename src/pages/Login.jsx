@@ -34,6 +34,8 @@ const Login = () => {
         .then((response) => {
           if (response.status === 200) {
             return response.data;
+          } else if (response.status === 401) {
+            return response.message;
           }
         })
         .then((data) => {
