@@ -37,7 +37,7 @@ export const loginUserAPI = (user) => apiClient({ method: 'post', url: '/auth/lo
  * confirmed password 
  * as payload
  */
-export const signUpUser = (user) => apiClient({
+export const signUpUserAPI = (user) => apiClient({
     method: 'post',
     url: `/auth/register`,
     headers: {},
