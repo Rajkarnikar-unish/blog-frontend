@@ -11,8 +11,13 @@ const BlogTileComponent = ({ blog }) => {
 
   const navigator = useNavigate();
 
+  const stripHtmlTags = (str) => {
+    return str.replace(/<\/?[^>]+(>|$)/g, "");
+  };
+
+  const cleanedTitle = stripHtmlTags(title);
   const handleBlogNavigation = (id) => {
-    navigator(`/${encodeURIComponent(title)}`, { state: id });
+    navigator(`/${encodeURIComponent(cleanedTitle)}`, { state: id });
   };
 
   return (
@@ -22,7 +27,7 @@ const BlogTileComponent = ({ blog }) => {
         onClick={() => handleBlogNavigation(id)}
       >
         <div className="container blog-box">
-          <p className="h5">{parse(`${title}`)}</p>
+          <p className="h4">{cleanedTitle}</p>
           <div className="date-author">
             {/* <p className="h6">{createdAt}</p> */}
             <p className="h6">{date}</p>

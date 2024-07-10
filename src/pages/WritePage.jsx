@@ -7,6 +7,7 @@ import { faBookDead } from "@fortawesome/free-solid-svg-icons";
 import "react-quill/dist/quill.bubble.css";
 import axios from "axios";
 import QuillEditor from "react-quill";
+import { useNavigate } from "react-router-dom";
 
 const WritePage = () => {
   const [title, setTitle] = useState("");
@@ -43,6 +44,12 @@ const WritePage = () => {
     }
   };
 
+  const navigator = useNavigate();
+
+  const handleBlogNavigation = (id, title) => {
+    navigator(`/${encodeURIComponent(title)}`, { state: id });
+  };
+
   const postAndPublishBlog = (e) => {
     e.preventDefault();
     if (validateForm()) {
@@ -52,9 +59,9 @@ const WritePage = () => {
 
       createAndPublishBlogPostAPI(blogPost, token)
         .then((response) => {
-          if (response.status === 200) {
-            console.log(response.data);
-          }
+          const data = response.data;
+          const { id, title } = data;
+          handleBlogNavigation(id, title);
         })
         .catch((error) => {
           console.error(
@@ -99,6 +106,8 @@ const WritePage = () => {
     "blockquote",
     "list",
     "bullet",
+    "align",
+    "code-block",
     "indent",
     "link",
     "image",
@@ -111,6 +120,7 @@ const WritePage = () => {
       container: [
         [{ header: [1, 2, 3, 4, false] }],
         ["bold", "italic", "underline", "blockquote"],
+        [{ align: [] }],
         [{ color: [] }],
         [
           { list: "ordered" },
@@ -118,6 +128,7 @@ const WritePage = () => {
           { indent: "-1" },
           { indent: "+1" },
         ],
+        ["code-block"],
         ["link", "image"],
         ["clean"],
       ],
