@@ -1,9 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import parse from "html-react-parser";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faDeleteLeft,
+  faPenToSquare,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 
 const BlogTileComponent = ({ blog }) => {
-  const { id, title, content, author, createdAt } = blog;
+  const { id, title, content, author, createdAt, isPublished } = blog;
 
   const timeStamp = new Date(createdAt);
   const date = timeStamp.toLocaleDateString();
@@ -35,13 +41,23 @@ const BlogTileComponent = ({ blog }) => {
           </div>
           <p className="intro">{parse(`${content}`)}</p>
         </div>
-        <div>
-          {/* <img
+        {isPublished ? null : (
+          <div className="control-buttons">
+            <button className="primary">
+              <FontAwesomeIcon icon={faPenToSquare} />
+            </button>
+            <button className="danger ms-2">
+              <FontAwesomeIcon icon={faTrash} />
+            </button>
+          </div>
+        )}
+        {/* <div>
+          <img
             src="src\assets\github.jpeg"
             alt="ThumbnailImage"
             className="thumbnail"
-          /> */}
-        </div>
+          />
+        </div> */}
       </div>
     </>
   );

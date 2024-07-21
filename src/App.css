@@ -75,7 +75,7 @@ header {
     color: yellow;
 }
 
-/* Blog Component */
+/* Blog Tile Component */
 
 .date-author {
     display: flex;
@@ -108,6 +108,11 @@ header {
     border-bottom: .25px solid rgba(0, 0, 0, .20);
     position: absolute;
     left: 20px;
+}
+
+.control-buttons {
+    display: flex;
+    height: 50px;
 }
 
 /* .container.blog-tile:hover {

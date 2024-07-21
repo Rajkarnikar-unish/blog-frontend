@@ -22,7 +22,8 @@ const Profile = () => {
     });
   }, []);
 
-  const { id, username, firstName, lastName, email } = userDetails;
+  const { id, username, firstName, lastName, email, profileImageUrl } =
+    userDetails;
 
   return (
     <>
@@ -30,8 +31,8 @@ const Profile = () => {
         <div className="profile profile-aside">
           <div className="image-container">
             <img
-              src="src/assets/github.jpeg"
-              alt="profile-picture"
+              src={profileImageUrl}
+              alt="profile-image-url"
               className="profile-img"
             />
             <div className="overlay">
