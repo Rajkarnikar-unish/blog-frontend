@@ -75,6 +75,62 @@ header {
     color: yellow;
 }
 
+.card-body {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.divider {
+    width: 80%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.divider::before, .divider::after{
+    flex: 1;
+    content: '';
+    padding: 0.25px;
+    margin-bottom: 4px;
+    background-color: rgba(0, 0, 0, .20);
+}
+
+.divider-text {
+    padding: 6px 8px;
+    display: flex;
+    font-size: 14px;
+    margin: 0px 0px 6px 0px;
+}
+
+.social-image {
+    height: 18px;
+    width: 18px;
+}
+
+.button-container{
+    width: 60%;
+    border-radius: 25px;
+    display: flex;
+    position: relative;
+    /* justify-content: center; */
+    align-items: center;
+    padding: 4px 0px 4px 80px;
+    margin: 6px 0px;
+    border: 1px solid #000;
+}
+
+.button-container > p {
+    margin-bottom: 0;
+}
+
+.button-container:hover {
+    background-color: rgba(0, 0, 0, .05);
+    cursor: pointer;
+}
+
 /* Blog Component */
 
 .date-author {

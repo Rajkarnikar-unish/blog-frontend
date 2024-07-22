@@ -83,7 +83,7 @@ const Signup = () => {
     <div className="container pb-5">
       <div className="row mb-5">
         <h1 className="display-6 mb-4 mt-5 text-center">Register here.</h1>
-        <div className="card col-md-6 offset-md-3 ">
+        <div className="card col-md-4 offset-md-3 ">
           <div className="card-body">
             <form onSubmit={formik.handleSubmit}>
               <div className="form-group mb-2">
