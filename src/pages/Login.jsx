@@ -185,14 +185,29 @@ const Login = () => {
             <div className="divider">
               <p className="divider-text">OR</p>
             </div>
-            <SocialSignOnButton
-              imageSrc="./public/google.png"
-              socialName="Google"
-            />
-            <SocialSignOnButton
-              imageSrc="./public/facebook.png"
-              socialName="Facebook"
-            />
+            <div className="social-button">
+              <SocialSignOnButton
+                imageSrc="./google.png"
+                onClick={() => {
+                  window.location.href =
+                    "http://localhost:8080/oauth2/authorization/google";
+                }}
+              />
+              <SocialSignOnButton
+                imageSrc="./facebook.png"
+                onClick={() => {
+                  window.location.href =
+                    "http://localhost:8080/oauth2/authorization/facebook";
+                }}
+              />
+              <SocialSignOnButton
+                imageSrc="./github.png"
+                onClick={() => {
+                  window.location.href =
+                    "http://localhost:8080/oauth2/authorization/github";
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>

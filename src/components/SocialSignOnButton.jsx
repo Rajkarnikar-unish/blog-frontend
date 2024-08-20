@@ -1,18 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const SocialSignOnButton = ({ imageSrc, socialName }) => {
+const SocialSignOnButton = ({ imageSrc, onClick }) => {
   return (
-    <div className="button-container">
+    <div className="button-container" onClick={onClick}>
       <img src={imageSrc} className="social-image" />
-      <p className="ms-2">Sign in with {socialName}</p>
     </div>
   );
 };
 
 SocialSignOnButton.propTypes = {
   imageSrc: PropTypes.string.isRequired,
-  socialName: PropTypes.string.isRequired,
 };
 
 export default SocialSignOnButton;

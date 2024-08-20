@@ -106,29 +106,27 @@ header {
 }
 
 .social-image {
-    height: 18px;
-    width: 18px;
+    height: 36px;
+    width: 36px;
 }
 
 .button-container{
-    width: 60%;
-    border-radius: 25px;
     display: flex;
-    position: relative;
-    /* justify-content: center; */
+    border-radius: 50px;
     align-items: center;
-    padding: 4px 0px 4px 80px;
-    margin: 6px 0px;
+    padding: 8px;
+    margin: 6px 6px;
     border: 1px solid #000;
 }
 
-.button-container > p {
-    margin-bottom: 0;
+.social-button {
+    display: flex;
 }
 
 .button-container:hover {
     background-color: rgba(0, 0, 0, .05);
     cursor: pointer;
+    border: 1px solid #DDD;
 }
 
 /* Blog Component */
@@ -145,7 +143,7 @@ header {
     text-align: justify;
     max-height: 5em;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
 }
 
