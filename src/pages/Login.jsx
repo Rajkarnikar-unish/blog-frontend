@@ -5,6 +5,7 @@ import { useAuth } from "../AuthProvider.jsx";
 import User from "../model/User.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SocialSignOnButton from "../components/SocialSignOnButton.jsx";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -107,10 +108,10 @@ const Login = () => {
   return (
     <div className="container">
       <div className="row">
-        <h1 className="display-4 mt-5 mb-4 text-center">Login here.</h1>
+        <h1 className="display-6 mt-3 mb-4 text-center">Login here.</h1>
         <div className="card col-md-6 offset-md-3">
           <div className="card-body">
-            <form>
+            <form className="container">
               <div className="form-group mb-2">
                 <label className="form-label">Username</label>
                 <input
@@ -165,9 +166,9 @@ const Login = () => {
                 Login
               </button>
             </form>
-            <div className="container">
+            <div className="sign-up container">
               <div>
-                <p>
+                <p className="mb-2">
                   Don't have an account yet?{" "}
                   <a
                     href={`/signup`}
@@ -180,6 +181,32 @@ const Login = () => {
                   </a>
                 </p>
               </div>
+            </div>
+            <div className="divider">
+              <p className="divider-text">OR</p>
+            </div>
+            <div className="social-button">
+              <SocialSignOnButton
+                imageSrc="./google.png"
+                onClick={() => {
+                  window.location.href =
+                    "http://localhost:8080/oauth2/authorization/google";
+                }}
+              />
+              <SocialSignOnButton
+                imageSrc="./facebook.png"
+                onClick={() => {
+                  window.location.href =
+                    "http://localhost:8080/oauth2/authorization/facebook";
+                }}
+              />
+              <SocialSignOnButton
+                imageSrc="./github.png"
+                onClick={() => {
+                  window.location.href =
+                    "http://localhost:8080/oauth2/authorization/github";
+                }}
+              />
             </div>
           </div>
         </div>
