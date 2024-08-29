@@ -12,7 +12,7 @@ const FooterComponent = () => {
               Team
             </a>
             <a
-              href="https://github.com/Rajkarnikar-unish/blog-frontend"
+              href="https://github.com/Rajkarnikar-unish/thoughtlabs"
               target="_blank"
               className="ms-1"
             >

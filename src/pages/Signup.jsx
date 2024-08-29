@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
-import axios from "axios";
+import SocialSignOnButton from "../components/SocialSignOnButton.jsx";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -80,10 +80,10 @@ const Signup = () => {
   const navigator = useNavigate();
 
   return (
-    <div className="container pb-5">
-      <div className="row mb-5">
-        <h1 className="display-6 mb-4 mt-5 text-center">Register here.</h1>
-        <div className="card col-md-4 offset-md-3 ">
+    <div className="container">
+      <div className="row">
+        <h1 className="display-6 mb-4 mt-3 text-center">Register here.</h1>
+        <div className="card col-md-6 offset-md-3 mb-5">
           <div className="card-body">
             <form onSubmit={formik.handleSubmit}>
               <div className="form-group mb-2">
@@ -229,6 +229,32 @@ const Signup = () => {
                 </p>
               </div>
             </form>
+            <div className="divider">
+              <p className="divider-text">OR</p>
+            </div>
+            <div className="social-button">
+              <SocialSignOnButton
+                imageSrc="./google.png"
+                onClick={() => {
+                  window.location.href =
+                    "http://localhost:8080/oauth2/authorization/google";
+                }}
+              />
+              <SocialSignOnButton
+                imageSrc="./facebook.png"
+                onClick={() => {
+                  window.location.href =
+                    "http://localhost:8080/oauth2/authorization/facebook";
+                }}
+              />
+              <SocialSignOnButton
+                imageSrc="./github.png"
+                onClick={() => {
+                  window.location.href =
+                    "http://localhost:8080/oauth2/authorization/github";
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
