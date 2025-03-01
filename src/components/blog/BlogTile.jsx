@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import parse from "html-react-parser";
 
-const BlogTileComponent = ({ blog }) => {
+const BlogTile = ({ blog }) => {
   const { id, title, content, author, createdAt } = blog;
 
   const timeStamp = new Date(createdAt);
@@ -42,4 +42,4 @@ const BlogTileComponent = ({ blog }) => {
   );
 };
 
-export default BlogTileComponent;
+export default BlogTile;

@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import {
   createAndPublishBlogPostAPI,
   createBlogPostAPI,
-} from "../services/BlogService";
+} from "../../services/BlogService";
 import { faBookDead } from "@fortawesome/free-solid-svg-icons";
 import "react-quill/dist/quill.bubble.css";
 import axios from "axios";
 import QuillEditor from "react-quill";
 
-const WritePage = () => {
+const Write = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -49,6 +49,7 @@ const WritePage = () => {
       const blogPost = { title, content };
 
       const token = localStorage.getItem("accessToken");
+      console.log(token);
 
       createAndPublishBlogPostAPI(blogPost, token)
         .then((response) => {
@@ -100,6 +101,7 @@ const WritePage = () => {
     "list",
     "bullet",
     "indent",
+    "code-block",
     "link",
     "image",
     "color",
@@ -118,7 +120,8 @@ const WritePage = () => {
           { indent: "-1" },
           { indent: "+1" },
         ],
-        ["link", "image"],
+        ["code-block"],
+        [("link", "image")],
         ["clean"],
       ],
     },
@@ -180,4 +183,4 @@ const WritePage = () => {
   );
 };
 
-export default WritePage;
+export default Write;

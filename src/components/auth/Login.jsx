@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { loginUserAPI } from "../services/UserService.js";
+import { loginUserAPI } from "../../services/UserService.js";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../AuthProvider.jsx";
-import User from "../model/User.js";
+import { useAuth } from "../../AuthProvider.jsx";
+import User from "../../model/User.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import SocialSignOnButton from "../components/SocialSignOnButton.jsx";
+import SocialSignOnButton from "./SocialSignOnButton.jsx";
 
 const Login = () => {
   const [username, setUsername] = useState("");

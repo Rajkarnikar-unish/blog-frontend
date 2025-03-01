@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { getBlogsByIDAPI } from "../services/BlogService";
+import { getBlogsByIDAPI } from "../../services/BlogService";
 import parse from "html-react-parser";
-import FooterComponent from "../components/FooterComponent";
+import FooterComponent from "../footer/Footer";
 
-const BlogPage = () => {
+const Blog = () => {
   const state = useLocation();
 
   const id = state.state;
@@ -47,4 +47,4 @@ const BlogPage = () => {
   );
 };
 
-export default BlogPage;
+export default Blog;

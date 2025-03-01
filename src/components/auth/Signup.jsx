@@ -1,10 +1,10 @@
 import { React, useState, useContext } from "react";
-import { signUpUserAPI } from "../services/UserService.js";
+import { signUpUserAPI } from "../../services/UserService.js";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
-import SocialSignOnButton from "../components/SocialSignOnButton.jsx";
+import SocialSignOnButton from "./SocialSignOnButton.jsx";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -19,7 +19,7 @@ const Signup = () => {
       .max(50),
     password: Yup.string()
       .matches(
-        /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{6,32}$/,
+        /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\S+$).{6,32}$/,
         "Password must be 6-32 characters long, conntain at least one uppercase letter, one lowercase letter, one digit, and one special character."
       )
       .required("Required"),

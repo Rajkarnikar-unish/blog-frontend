@@ -1,35 +1,34 @@
 import "./App.css";
-import HomePage from "./pages/HomePage";
-import HeaderComponent from "./components/HeaderComponent";
-import FooterComponent from "./components/FooterComponent";
+import Home from "./components/home/Home";
+import Header from "./components/header/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./pages/Login";
-import Profile from "./pages/Profile";
-import Signup from "./pages/Signup";
-import WritePage from "./pages/WritePage";
+import Login from "./components/auth/Login";
+import Profile from "./components/user/Profile";
+import Signup from "./components/auth/Signup";
 import { ToastContainer } from "react-toastify";
-import BlogPage from "./pages/BlogPage";
+import Blog from "./components/blog/Blog";
+import Write from "./components/blog/Write";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <HeaderComponent />
+        <Header />
         <Routes>
           {/* //http://localhost:3000 */}
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<Home />} />
 
           <Route path="/login" element={<Login />} />
 
           <Route path="/signup" element={<Signup />} />
 
-          <Route path="/new-blog" element={<WritePage />} />
+          <Route path="/new-blog" element={<Write />} />
 
           <Route path="/profile" element={<Profile />}></Route>
 
-          <Route path="/:title" element={<BlogPage />}></Route>
+          <Route path="/:title" element={<Blog />}></Route>
         </Routes>
-        {/* <FooterComponent /> */}
+        {/* <Footer /> */}
         <ToastContainer />
       </BrowserRouter>
     </>
