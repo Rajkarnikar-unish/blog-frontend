@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import parse from "html-react-parser";
 
-const BlogTileComponent = ({ blog }) => {
+const BlogTile = ({ blog }) => {
   const { id, title, content, author, createdAt } = blog;
 
   const timeStamp = new Date(createdAt);
@@ -26,7 +26,9 @@ const BlogTileComponent = ({ blog }) => {
           <div className="date-author">
             {/* <p className="h6">{createdAt}</p> */}
             <p className="h6">{date}</p>
-            <p className="h6 ms-2">{author.username}</p>
+            <p className="h6 ms-2">
+              {author ? author.username : "Unknown Author"}
+            </p>
           </div>
           <p className="intro">{parse(`${content}`)}</p>
         </div>
@@ -42,4 +44,4 @@ const BlogTileComponent = ({ blog }) => {
   );
 };
 
-export default BlogTileComponent;
+export default BlogTile;

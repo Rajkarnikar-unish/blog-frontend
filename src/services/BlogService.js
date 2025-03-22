@@ -1,4 +1,4 @@
-import apiClient from "./client/api";
+import apiClient from "../api/api";
 
 export const getAllBlogsAPI = () => apiClient({
     // BASE_URL + "/posts"
@@ -27,6 +27,7 @@ export const getPostsByUserAPI = (id) => apiClient({
     method: 'get',
     url: `/users/${id}/posts`,
     headers: {},
+    withCredentials: true,
 });
 
 export const createAndPublishBlogPostAPI = (blog, token) => apiClient({

@@ -1,28 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { getUserDetailsAPI } from "../services/UserService";
-import { getPostsByUserAPI } from "../services/BlogService";
-import BlogTileComponent from "../components/BlogTileComponent";
-import FooterComponent from "../components/FooterComponent";
+import { getUserDetailsAPI } from "../../services/UserService";
+import { getPostsByUserAPI } from "../../services/BlogService";
+import { getCookies, getOAuthUser } from "../../services/OAuthService";
+import BlogTile from "../blog/BlogTile";
 
 const Profile = () => {
-  const token = localStorage.getItem("accessToken");
+  let token = localStorage.getItem("accessToken");
   const [userDetails, setUserDetails] = useState({});
 
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    getUserDetailsAPI(token).then((response) => {
-      const data = response.data;
-      setUserDetails(data);
+    if (token) {
+      getUserDetailsAPI(token).then((response) => {
+        const data = response.data;
+        setUserDetails(data);
 
-      getPostsByUserAPI(data.id).then((response) => {
-        // console.log(response.data);
-        setBlogs(response.data);
+        getPostsByUserAPI(data.id).then((response) => {
+          setBlogs(response.data);
+        });
       });
-    });
+    } else {
+      getOAuthUser().then((response) => {
+        const data = response.data;
+        setUserDetails(data);
+
+        getPostsByUserAPI(data.id).then((response) => {
+          setBlogs(response.data);
+        });
+      });
+    }
   }, []);
 
-  const { id, username, firstName, lastName, email } = userDetails;
+  const { username, firstName, lastName, email, profileImageUrl } = userDetails;
 
   return (
     <>
@@ -30,7 +40,7 @@ const Profile = () => {
         <div className="profile profile-aside">
           <div className="image-container">
             <img
-              src="src/assets/github.jpeg"
+              src={profileImageUrl}
               alt="profile-picture"
               className="profile-img"
             />
@@ -73,7 +83,7 @@ const Profile = () => {
               <button className="chip-btn">Drafts</button>
             </div>
             {blogs.map((blog, index) => (
-              <BlogTileComponent key={index} blog={blog} />
+              <BlogTile key={index} blog={blog} />
             ))}
           </div>
         </div>

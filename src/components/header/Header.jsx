@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../AuthProvider";
+import { useAuth } from "../../AuthProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const HeaderComponent = () => {
+const Header = () => {
   const navigator = useNavigate();
   const { user, logout } = useAuth();
 
@@ -71,6 +71,12 @@ const HeaderComponent = () => {
                       >
                         Profile
                       </button>
+                      <button
+                        className="btn"
+                        onClick={() => console.log("Settings")}
+                      >
+                        Settings
+                      </button>
                       <button className="btn" onClick={userLogout}>
                         Logout
                       </button>
@@ -90,4 +96,4 @@ const HeaderComponent = () => {
   );
 };
 
-export default HeaderComponent;
+export default Header;

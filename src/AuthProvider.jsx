@@ -1,4 +1,9 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
+import {
+  getCookies,
+  getOAuthUser,
+  logoutOAuth2User,
+} from "./services/OAuthService";
 
 const AuthContext = createContext(null);
 
@@ -18,8 +23,33 @@ export const AuthProvider = ({ children }) => {
         accessToken,
         refreshToken,
       });
+    } else {
+      checkOAuth2Session();
     }
   }, []);
+
+  const checkOAuth2Session = () => {
+    try {
+      getOAuthUser()
+        .then((response) => {
+          if (response.status === 200) {
+            return response.data;
+          } else if (response.status === 401) {
+            return response.message;
+          }
+        })
+        .then((data) => {
+          setUser(data);
+        });
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        console.warn("User session expired or not found. Logging out...");
+        setUser(null);
+      } else {
+        console.error("Failed to retrieve OAuth2 session: ", error);
+      }
+    }
+  };
 
   const login = (userData) => {
     setUser(userData);
@@ -28,9 +58,15 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
-    setUser(null);
+    //Remove tokens from localStorage
+    if (accessToken || refreshToken) {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
+      setUser(null);
+    } else {
+      logoutOAuth2User().then((response) => console.log(response));
+      setUser(null);
+    }
   };
 
   return (

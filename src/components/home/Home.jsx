@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import BlogTileComponent from "../components/BlogTileComponent";
-import { getAllBlogsAPI } from "../services/BlogService";
-import FooterComponent from "../components/FooterComponent";
+import BlogTile from "../blog/BlogTile";
+import { getAllBlogsAPI } from "../../services/BlogService";
+import FooterComponent from "../footer/Footer";
 
-const HomePage = () => {
+const Home = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const HomePage = () => {
     <div className="container main-container">
       <div className="container mt-4 blogs-container">
         {blogs.map((blog, index) => (
-          <BlogTileComponent key={index} blog={blog} />
+          <BlogTile key={index} blog={blog} />
         ))}
         <FooterComponent />
       </div>
@@ -40,4 +40,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;

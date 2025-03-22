@@ -1,4 +1,4 @@
-import apiClient from "./client/api";
+import apiClient from "../api/api";
 
 /**
  * User Details API Function
@@ -44,8 +44,8 @@ export const signUpUserAPI = (user) => apiClient({
     data: user,
 });
 
-export const getAllUser = () => apiClient({
-    method: 'get',
-    url: `/users/user-role?roleName=ROLE_USER`,
-    headers: {},
-});
+// export const getAllUser = () => apiClient({
+//     method: 'get',
+//     url: `/users/user-role?roleName=ROLE_USER`,
+//     headers: {},
+// });
