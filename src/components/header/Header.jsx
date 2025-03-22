@@ -71,6 +71,12 @@ const Header = () => {
                       >
                         Profile
                       </button>
+                      <button
+                        className="btn"
+                        onClick={() => console.log("Settings")}
+                      >
+                        Settings
+                      </button>
                       <button className="btn" onClick={userLogout}>
                         Logout
                       </button>

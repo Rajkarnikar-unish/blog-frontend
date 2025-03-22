@@ -69,10 +69,16 @@ const Login = () => {
           navigator("/");
         })
         .catch((error) => {
-          console.error(
-            "Error message during login: ",
-            error.message || "An unknown error occured!"
-          );
+          if (error.response && error.response.status === 409) {
+            toast.info("Please verify your email address to login!", {
+              position: "bottom-right",
+            });
+          } else {
+            console.error(
+              "Error message during login: ",
+              error.message || "An unknown error occured!"
+            );
+          }
         });
     }
   }
@@ -149,7 +155,10 @@ const Login = () => {
                   <div className="col-8 d-flex">
                     <input
                       type="checkbox"
-                      className="mb-3"
+                      className="mb-4 mt-2"
+                      style={{
+                        scale: 0.8,
+                      }}
                       onChange={handlePasswordVisibility}
                     />
                     <p className="px-2 pb-1">Show password</p>

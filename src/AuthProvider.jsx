@@ -42,7 +42,12 @@ export const AuthProvider = ({ children }) => {
           setUser(data);
         });
     } catch (error) {
-      console.error("Failed to retrieve OAuth2 session:", error);
+      if (error.response && error.response.status === 401) {
+        console.warn("User session expired or not found. Logging out...");
+        setUser(null);
+      } else {
+        console.error("Failed to retrieve OAuth2 session: ", error);
+      }
     }
   };
 
