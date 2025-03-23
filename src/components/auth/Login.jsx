@@ -69,10 +69,16 @@ const Login = () => {
           navigator("/");
         })
         .catch((error) => {
-          console.error(
-            "Error message during login: ",
-            error.message || "An unknown error occured!"
-          );
+          if (error.response && error.response.status === 409) {
+            toast.info("Please verify your email address to login!", {
+              position: "bottom-right",
+            });
+          } else {
+            console.error(
+              "Error message during login: ",
+              error.message || "An unknown error occured!"
+            );
+          }
         });
     }
   }
