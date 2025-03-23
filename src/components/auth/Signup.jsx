@@ -202,7 +202,7 @@ const Signup = () => {
               <div className="col-9 d-flex">
                 <input
                   type="checkbox"
-                  className="mb-3"
+                  className="form-check-input"
                   onChange={handlePasswordVisibility}
                 />
                 <p className="px-2 pb-1">Show password</p>

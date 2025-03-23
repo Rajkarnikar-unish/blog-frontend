@@ -24,11 +24,11 @@ export const AuthProvider = ({ children }) => {
         refreshToken,
       });
     } else {
-      checkOAuth2Session();
+      // checkOAuth2Session();
     }
   }, []);
 
-  const checkOAuth2Session = () => {
+  const checkOAuth2Session = async () => {
     try {
       getOAuthUser()
         .then((response) => {
@@ -39,7 +39,10 @@ export const AuthProvider = ({ children }) => {
           }
         })
         .then((data) => {
-          setUser(data);
+          // console.log(data);
+          if(data.isEmailVerified) {
+            setUser(data);
+          }
         });
     } catch (error) {
       console.error("Failed to retrieve OAuth2 session:", error);

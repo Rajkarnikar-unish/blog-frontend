@@ -8,6 +8,8 @@ import Signup from "./components/auth/Signup";
 import { ToastContainer } from "react-toastify";
 import Blog from "./components/blog/Blog";
 import Write from "./components/blog/Write";
+import EmailVerification from "./components/auth/EmailVerification";
+import ForgotPassword from "./components/auth/ForgotPassword";
 
 function App() {
   return (
@@ -25,6 +27,10 @@ function App() {
           <Route path="/new-blog" element={<Write />} />
 
           <Route path="/profile" element={<Profile />}></Route>
+
+          <Route path="/forgot-password" element={<ForgotPassword/>}></Route>
+
+          <Route path="/verify-email" element={<EmailVerification/>}></Route>
 
           <Route path="/:title" element={<Blog />}></Route>
         </Routes>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { loginUserAPI } from "../../services/UserService.js";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../AuthProvider.jsx";
 import User from "../../model/User.js";
 import { ToastContainer, toast } from "react-toastify";
@@ -105,6 +105,15 @@ const Login = () => {
     return valid;
   }
 
+  const location = useLocation();
+  const [emailVerifiedMessage, setEmailVerifiedMessage] = useState("");
+
+  useEffect(() => {
+    if(location.state?.message) {
+      setEmailVerifiedMessage(location.state?.message);
+    }
+  }, [location]);
+
   return (
     <div className="container">
       <div className="row">
@@ -112,6 +121,7 @@ const Login = () => {
         <div className="card col-md-6 offset-md-3">
           <div className="card-body">
             <form className="container">
+              {emailVerifiedMessage && <p className="text-success">{emailVerifiedMessage}</p>}
               <div className="form-group mb-2">
                 <label className="form-label">Username</label>
                 <input
@@ -149,13 +159,17 @@ const Login = () => {
                   <div className="col-8 d-flex">
                     <input
                       type="checkbox"
-                      className="mb-3"
+                      className="form-check-input"
                       onChange={handlePasswordVisibility}
                     />
                     <p className="px-2 pb-1">Show password</p>
                   </div>
                   <div className="col text-end">
-                    <a href="#">Forgot password?</a>
+                    <a href={`/forgot-password`} 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigator("/forgot-password");
+                    }}>Forgot password?</a>
                   </div>
                 </div>
               </div>

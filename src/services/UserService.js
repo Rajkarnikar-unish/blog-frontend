@@ -14,6 +14,23 @@ export const getUserDetailsAPI = (token) => apiClient({
 });
 
 /**
+ * User Verify Email API function
+ * token is a request param
+ */
+export const verifyUserEmail = (token) => apiClient({
+    method: 'post',
+    url: `/auth/verify?token=${token}`
+});
+
+/**
+ * User Forgot Password API function
+ */
+export const forgotPassword = (email) => apiClient({
+    method: 'post',
+    url: `/auth/forgot-password?email=${email}`
+});
+
+/**
  * User Login API function
  * No need for header
  * Requires data with username and password as payload

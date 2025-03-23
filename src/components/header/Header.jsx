@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../AuthProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -62,7 +62,8 @@ const Header = () => {
                 {user ? (
                   <div className="profile">
                     <div className="avatar">
-                      <FontAwesomeIcon icon={faUser} size="lg" />
+                    <FontAwesomeIcon icon={faUser} size="lg" />
+                      {/* {profileImageUrl ? <img src={profileImageUrl} /> : <FontAwesomeIcon icon={faUser} size="lg" />} */}
                     </div>
                     <div className="profile-content">
                       <button
