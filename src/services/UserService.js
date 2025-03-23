@@ -31,6 +31,16 @@ export const forgotPassword = (email) => apiClient({
 });
 
 /**
+ * Password Reset API Functin
+ * Takes JSON Body with password and JWT
+ */
+export const resetPasswordAPI = (resetBody) => apiClient({
+    method: 'post',
+    url: "/auth/reset-password",
+    data: resetBody,
+})
+
+/**
  * User Login API function
  * No need for header
  * Requires data with username and password as payload

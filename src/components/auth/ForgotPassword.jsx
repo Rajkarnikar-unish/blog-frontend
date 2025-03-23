@@ -31,7 +31,6 @@ const ForgotPassword = () => {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            console.log(values.email);
             forgotPassword(values.email)
                 .then((response) => {
                     const {status, message} = response.data;
@@ -53,26 +52,26 @@ const ForgotPassword = () => {
                 <div className="card-body">
                     {!submitted ? (
                         <form onSubmit={formik.handleSubmit} className="container">
-                        <div className="form-group mb-2">
-                            <label className="form-label">Enter your email address</label>
-                            <input
-                                id='email'
-                                type='email' 
-                                placeholder='E.g. johndoe@gmail.com'
-                                className='form-control'
-                                onChange={(e) => formik.handleChange(e)}
-                                onBlur={formik.handleBlur}
-                                value={formik.values.email}
-                                name="email"
-                            />
-                            {formik.touched.email && formik.errors.email ? (
-                                <div>{formik.errors.email}</div>
-                            ) : null}
-                        </div>
-                        <button
-                         className='btn btn-success d-grid mb-1 mx-auto'
-                         type='submit'
-                        >Reset Password</button>
+                            <div className="form-group mb-2">
+                                <label className="form-label">Enter your email address</label>
+                                <input
+                                    id='email'
+                                    type='email' 
+                                    placeholder='E.g. johndoe@gmail.com'
+                                    className='form-control'
+                                    onChange={(e) => formik.handleChange(e)}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.email}
+                                    name="email"
+                                />
+                                {formik.touched.email && formik.errors.email ? (
+                                    <div>{formik.errors.email}</div>
+                                ) : null}
+                            </div>
+                            <button
+                            className='btn btn-success d-grid mb-1 mx-auto'
+                            type='submit'
+                            >Reset Password</button>
                     </form>
                     ) : (<div className="text-success">{message} We've sent you instructions to reset your password.</div>)}
                     

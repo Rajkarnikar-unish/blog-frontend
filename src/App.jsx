@@ -10,6 +10,7 @@ import Blog from "./components/blog/Blog";
 import Write from "./components/blog/Write";
 import EmailVerification from "./components/auth/EmailVerification";
 import ForgotPassword from "./components/auth/ForgotPassword";
+import ResetPassword from "./components/auth/ResetPassword";
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
           <Route path="/profile" element={<Profile />}></Route>
 
           <Route path="/forgot-password" element={<ForgotPassword/>}></Route>
+
+          <Route path="/reset-password" element={<ResetPassword/>}></Route>
 
           <Route path="/verify-email" element={<EmailVerification/>}></Route>
 
