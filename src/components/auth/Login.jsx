@@ -33,13 +33,8 @@ const Login = () => {
 
       loginUserAPI(userResponse)
         .then((response) => {
-          if (response.status === 200) {
-            return response.data;
-          } else if (response.status === 401) {
-            return response.message;
-          }
-        })
-        .then((data) => {
+          const data = response.data;
+
           setUsername("");
           setPassword("");
           const {
@@ -69,15 +64,34 @@ const Login = () => {
           navigator("/");
         })
         .catch((error) => {
-          if (error.response && error.response.status === 409) {
-            toast.info("Please verify your email address to login!", {
-              position: "bottom-right",
+          console.log("Error object:", error);
+          if(error.response) {
+            console.log("Error response data: ", error.response.data);
+            console.log("Error response status: ", error.response.status);
+
+            if(error.response.status === 409) {
+              toast.info("Please verify your email address to login!", {
+                position: "bottom-right",
+              });
+            }else if (error.response.status === 401) {
+              const errorMessage = error.response.data.message || "Invalid login credentials";
+              toast.error(errorMessage, {
+                position: "bottom-right"
+              });
+            }else {
+              toast.error("Login failed, Please try again.", {
+                position: "bottom-right"
+              });
+            }
+          } else if(error.request) {
+            toast.error("No response from server. Please try again later.", {
+              position: "bottom-right"
             });
           } else {
-            console.error(
-              "Error message during login: ",
-              error.message || "An unknown error occured!"
-            );
+            // Something happened in setting up the request that triggered an Error
+            toast.error(error.message || "An unknown error occurred!", {
+              position: "bottom-right"
+            });
           }
         });
     }
