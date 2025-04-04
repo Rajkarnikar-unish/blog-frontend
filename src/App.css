@@ -200,7 +200,7 @@ header {
     padding-top: 20px;
 }
 
-.topics {
+/* .topics {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -222,7 +222,7 @@ header {
     cursor: pointer;
     background-color: #7A5C58;
     color: white;
-}
+} */
 
 .navbar {
     width: 100%;

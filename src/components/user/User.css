@@ -1,0 +1,80 @@
+.profile-container {
+    display: flex;
+}
+.user-content {
+    flex: 2;
+}
+.user-aside {
+    display: block;
+    flex: 1;
+}
+
+.banner-container {
+    margin-left:0.75rem;
+}
+
+.img-container {
+    height: 80px;
+    width: 80px;
+    object-fit: fill;
+    border: solid 2px #7A5C58;;
+}
+
+.user {
+    margin-top: -40px;
+    display: flex;
+}
+
+.user-bio {
+    color: rgb(89, 88, 88);
+}
+
+/* ABOUT SECTION CSS */
+
+.about {
+    /* width: 90%; */
+    margin: 0 0.85rem;
+    background-color: rgb(237, 237, 237);
+}
+
+.about-header {
+    display: flex;
+}
+
+.edit-icon {
+    padding-top: .35rem;
+    padding-left: 0.75rem;
+}
+
+.edit-icon:hover {
+    cursor: pointer;
+}
+
+.bio {
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+    font-size: 14px;
+}
+
+/* INTERESTS SECTION CSS */
+
+.interests-container {
+    margin: 0 0.85rem;
+    background-color: rgb(237, 237, 237);
+}
+
+.interests {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.interests > p {
+    color: white;
+    background-color: #7A5C58;
+    padding: 0.45rem 1rem;
+    display: inline-block;
+    border-radius: 50px;
+    font-size: 14px;
+    margin-bottom: 0.4rem;
+}
