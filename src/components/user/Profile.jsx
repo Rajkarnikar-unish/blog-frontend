@@ -4,7 +4,7 @@ import { getPostsByUserAPI } from "../../services/BlogService";
 import { getCookies, getOAuthUser } from "../../services/OAuthService";
 import BlogTile from "../blog/BlogTile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencil, faEllipsis } from "@fortawesome/free-solid-svg-icons";
+import { faPencil, faEllipsis, faXmark, faX } from "@fortawesome/free-solid-svg-icons";
 import './User.css';
 
 const Profile = () => {
@@ -43,6 +43,21 @@ const Profile = () => {
   function capitalizeString(string) {
     return string?.charAt(0).toUpperCase() + string?.slice(1) || "";
   }
+
+  const [interests, setInterests] = useState( [
+    'Technology',
+    'Health',
+    'Insurance',
+    'Sports',
+    'Education',
+    'International Students',
+    'Corporate Life',
+    'Trading',
+  ]);
+
+  const handleDelete = (index) => {
+    setInterests((prev) => prev.filter((_, i) => i!==index));
+  };
 
   return (
     <>
@@ -100,17 +115,15 @@ const Profile = () => {
           <div className="interests-container mt-3 rounded pt-3 p-3 pb-2">
             <p className="h5">What you're into</p>
             <div className="interests">
-              <p className="me-2">Trading</p>
-              <p className="me-2">US</p>
-              <p className="me-2">Technology</p>
-              <p className="me-2">US</p>
-              <p className="me-2">US</p>
-              <p className="me-2">Backend</p>
-              <p className="me-2">US</p>
-              <p className="me-2">Health & Wellness</p>
-              <p className="me-2">Lifestyle</p>
-              <p className="me-2">Education</p>
-              <p className="me-2">Business</p>
+              {interests.map((interest, index) => (
+                <div key={index} className="interest me-2">
+                  <a href="#" className="interest-text">{interest}</a>
+                  <button className="delete-btn ms-2" onClick={() => handleDelete(index)}>
+                    ✖
+                    {/* <FontAwesomeIcon>{faX}</FontAwesomeIcon> */}
+                  </button>
+                </div>
+              ))}
             </div>
           </div>
         </div>
