@@ -10,7 +10,30 @@
 }
 
 .banner-container {
-    margin-left:0.75rem;
+    position: relative;
+    width: 100%;
+}
+
+.banner-img {
+    width: 100%;
+    display: block;
+}
+
+.more-menu {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: white;
+    z-index: 1;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 25%;
+    padding: 2px 4px;
+    transition: background-color 0.3s ease;
+}
+
+.more-menu:hover {
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .img-container {
