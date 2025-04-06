@@ -23,9 +23,9 @@ export const createBlogPostAPI = (blog, token) => apiClient({
     data: blog,
 });
 
-export const getPostsByUserAPI = (id) => apiClient({
+export const getPostsByUserAPI = (id, status='published') => apiClient({
     method: 'get',
-    url: `/users/${id}/posts`,
+    url: `/users/${id}/posts?status=${status}`,
     headers: {},
     withCredentials: true,
 });
