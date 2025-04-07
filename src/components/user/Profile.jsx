@@ -29,10 +29,6 @@ const Profile = () => {
         const data = response.data;
         setUserDetails(data);
 
-        // if(status==="All") {
-        //   getAllBlogsAPI
-        // }
-
         getPostsByUserAPI(data.id).then((response) => {
           setBlogs(response.data);
         });
@@ -120,7 +116,7 @@ const Profile = () => {
             <div className="tab-pane fade" id="saved" role="tabpanel" aria-labelledby="saved-tab">This is test saved content for tab layout using bootstrap.</div>
           </div>
         </div>
-        <div className="user-aside mt-3">
+        <div className="user-aside mt-3 ms-3">
           <div className="banner-container">
             <img src="gradient.png" alt="banner-image" className="rounded-top banner-img" />
             <FontAwesomeIcon icon={faEllipsis} className="more-menu"/>
@@ -139,8 +135,7 @@ const Profile = () => {
               <FontAwesomeIcon icon={faPencil} className="edit-icon" onClick={() => alert("this is a test")} />
             </div>
             <p className="bio">
-              Tell us about yourself
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo aliquam similique voluptatum praesentium mollitia excepturi omnis.
+              Tell us about yourself...
             </p>
           </div>
           <div className="interests-container mt-3 rounded pt-3 p-3 pb-2">
