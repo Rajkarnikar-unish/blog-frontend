@@ -23,12 +23,16 @@ export const createBlogPostAPI = (blog, token) => apiClient({
     data: blog,
 });
 
-export const getPostsByUserAPI = (id, status='published') => apiClient({
-    method: 'get',
-    url: `/users/${id}/posts?status=${status}`,
-    headers: {},
-    withCredentials: true,
-});
+export const getPostsByUserAPI = (id, status) =>{
+    const url = status ? `/users/${id}/posts?status=${status}` : `/users/${id}/posts`;
+
+    return apiClient({
+        method: 'get',
+        url: url,
+        headers: {},
+        withCredentials: true,
+    });
+};
 
 export const createAndPublishBlogPostAPI = (blog, token) => apiClient({
     method: 'put',

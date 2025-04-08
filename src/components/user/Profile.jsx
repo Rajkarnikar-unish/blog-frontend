@@ -11,6 +11,7 @@ import { Tab } from "bootstrap";
 const Profile = () => {
   let token = localStorage.getItem("accessToken");
   const [userDetails, setUserDetails] = useState({});
+  const [selectedStatus, setSelectedStatus] = useState("All");
 
   const [blogs, setBlogs] = useState([]);
 
@@ -69,25 +70,13 @@ const Profile = () => {
     setInterests((prev) => prev.filter((_, i) => i!==index));
   };
 
-  const [status, setStatuses] = useState([
-    'All',
-    "Published",
-    "Drafts",
-  ]);
-
-  const [selectedStatus, setSelectedStatus] = useState("All");
+  const handlePillClick = (status) => {
+    setSelectedStatus(status);
+  }
 
   return (
     <>
       <div className="container profile-container">
-        {/* <div className="container user-blogs mt-4 ms-4">
-          <div>
-            <p className="display-6">Blogs</p>
-            
-            
-          </div>
-        </div> */}
-
         <div className="user-content mt-3 ms-3">
           <ul className="nav nav-tabs" id="tab" role="tablist">
             <li className="nav-item" role="presentation">
@@ -99,7 +88,34 @@ const Profile = () => {
           </ul>
           <div className="tab-content" id="tabContent">
             <div className="tab-pane fade show active" id="blogs" role="tabpanel" aria-labelledby="blogs-tab">
-              <div className="chips mb-4 mt-3">
+              <ul className="nav nav-pills mt-2 ms-2 nav-fill">
+                <li className="nav-item">
+                  <a 
+                    href="#" 
+                    className={`nav-link ${selectedStatus === "All" ? "active" : ""}`}
+                    onClick={() => handlePillClick("All")}
+                  >
+                    All
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a 
+                    href="#" 
+                    className={`nav-link ${selectedStatus === "Published" ? "active" : ""}`}
+                    onClick={() => handlePillClick("Published")}>
+                    Published
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a 
+                    href="#" 
+                    className={`nav-link ${selectedStatus === "Drafts" ? "active" : ""}`}
+                    onClick={() => handlePillClick("Drafts")}>
+                      Drafts
+                  </a>
+                </li>
+              </ul>
+              {/* <div className="chips mb-4 mt-3">
                 {status.map((label, index) => (
                   <button 
                     key={index}
@@ -108,12 +124,15 @@ const Profile = () => {
                       {label}
                   </button>
                 ))}
-              </div>
+              </div> */}
               {blogs.map((blog, index) => (
                 <BlogTile key={index} blog={blog} />
               ))}
             </div>
-            <div className="tab-pane fade" id="saved" role="tabpanel" aria-labelledby="saved-tab">This is test saved content for tab layout using bootstrap.</div>
+            <div 
+              className="tab-pane fade" id="saved" role="tabpanel" aria-labelledby="saved-tab">
+                This is test saved content for tab layout using bootstrap.
+            </div>
           </div>
         </div>
         <div className="user-aside mt-3 ms-3">
@@ -156,72 +175,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-
-/**
-<div className="user-blogss">
-            <p className="h6">Blogs</p>
-            {/* <div className="chips mb-4">
-              <button className="chip-btn selected-chip">All</button>
-              <button className="chip-btn">Published</button>
-              <button className="chip-btn">Drafts</button>
-              {/* {blogs.map((blog, index) => (
-              <BlogTile key={index} blog={blog} />
-            ))} *
-            </div> 
-          </div>
-          <div className="user-saved-blogs"><p className="h6">Saved</p></div>
-          */
-
-/**
- * <div className="profile profile-aside">
-          <div className="image-container">
-            <img
-              src={profileImageUrl}
-              alt="profile-picture"
-              className="profile-img"
-            />
-            <div className="overlay">
-              <p
-                className="upload-text"
-                onClick={() => console.log("UPLOAD BUTTON")}
-              >
-                Upload Image
-              </p>
-            </div>
-          </div>
-          <div className="user-details">
-            <div className="name">
-              <p className="">
-                {firstName
-                  ? firstName.substring(0, 1).toUpperCase() +
-                    firstName.substring(1)
-                  : ""}
-              </p>
-              <p className="ps-1">
-                {lastName
-                  ? lastName.substring(0, 1).toUpperCase() +
-                    lastName.substring(1)
-                  : ""}
-              </p>
-            </div>
-            <p className="username">{username}</p>
-            <button className="btn btn-success edit-btn">Edit profile</button>
-
-            // {blogs.map((blog, index) => )} 
-            </div>
-            </div>
-            <div className="container user-blogs mt-4 ms-4">
-              <div>
-                <p className="display-6">Blogs</p>
-                <div className="chips mb-4">
-                  <button className="chip-btn selected-chip">All</button>
-                  <button className="chip-btn">Published</button>
-                  <button className="chip-btn">Drafts</button>
-                </div>
-                {blogs.map((blog, index) => (
-                  <BlogTile key={index} blog={blog} />
-                ))}
-              </div>
-            </div>
- */
