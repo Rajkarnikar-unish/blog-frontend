@@ -18,7 +18,7 @@ const BlogTile = ({ blog }) => {
   return (
     <>
       <div
-        className="container pt-1 blog-tile mb-3"
+        className="container blog-tile mt-2"
         onClick={() => handleBlogNavigation(id)}
       >
         <div className="container blog-box">

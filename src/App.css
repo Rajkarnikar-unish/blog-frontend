@@ -28,6 +28,7 @@
 
 .footer {
     bottom: 0;
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -128,6 +129,14 @@ header {
 
 /* Blog Component */
 
+.blog-box > p{
+    margin: 0;
+}
+
+.blog-box > p > p {
+    margin: 0px;
+}
+
 .date-author {
     display: flex;
     color: rgba(0,0,0, .70);
@@ -138,7 +147,7 @@ header {
     text-overflow: ellipsis;
     word-wrap: break-word;
     text-align: justify;
-    max-height: 5em;
+    max-height: 4em;
     display: -webkit-box;
     line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -147,12 +156,12 @@ header {
 .container.blog-tile {
     /* width: 60%; */
     display: inline-flex;
-    height: 200;
+    height: 100;
     position: relative;
     cursor: pointer;
 }
 
-.container.blog-tile::after {
+.blog-tile::after {
     content: '';
     bottom: 0;
     width: 95%;
